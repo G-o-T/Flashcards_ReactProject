@@ -1,0 +1,19 @@
+.menu {
+
+    &__list {
+        display: flex;
+        list-style-type: none;
+        gap: 32px;
+    }
+
+    &__link {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        @include s-text(0.6, var(--color));
+
+        &:hover {
+            @include s-text(1, var(--color));
+        }
+    }
+}

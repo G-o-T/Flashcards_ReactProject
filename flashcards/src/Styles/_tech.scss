@@ -1,0 +1,52 @@
+:root {
+    --bg-color: #1F1C3A;
+    --color: #ffffff;
+    font-size: 10px;
+    font-style: normal;
+    color: var(--color);
+    // font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+
+$orange: linear-gradient(#FF6C29, #FE4437);
+$blue: linear-gradient(#57A7EC, #6D74D2, #8936B2);
+$magenta: linear-gradient(#E7125E, #B61F82, #8A2BA1);
+$skyblue: #5468FF;
+
+@mixin logo {
+    font-family: "Monoton";
+    font-size: 42px;
+    line-height: 100%;
+}
+
+@mixin text-color($color) {
+    background: $color;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--bg-color);
+    display: table;
+}
+
+@mixin main-title {
+    font-family: "Monoton";
+    font-size: 74px;
+    line-height: 100%;
+    text-transform: uppercase;
+}
+
+@mixin m-text($opacity, $color) {
+    font-size: 24px;
+    line-height: 120%;
+    font-weight: 600;
+    opacity: $opacity;
+    color: $color;
+}
+
+@mixin s-text($opacity, $color) {
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 400;
+    opacity: $opacity;
+    color: $color;
+}
+
+

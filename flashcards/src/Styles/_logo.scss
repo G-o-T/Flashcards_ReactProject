@@ -1,0 +1,8 @@
+.logo {
+    display: flex;
+
+    &__letter {
+        @include logo;
+    }
+}
+
