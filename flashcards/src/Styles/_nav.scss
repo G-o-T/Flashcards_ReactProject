@@ -13,7 +13,12 @@
         @include s-text(0.6, var(--color));
 
         &:hover {
-            @include s-text(1, var(--color));
+            opacity: 1;
+        }
+
+        &_active {
+            opacity: 1;
         }
     }
 }
+

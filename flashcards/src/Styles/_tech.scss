@@ -1,6 +1,7 @@
 :root {
     --bg-color: #1F1C3A;
     --color: #ffffff;
+    --text: #A5A4B0;
     font-size: 10px;
     font-style: normal;
     color: var(--color);
@@ -11,6 +12,7 @@ $orange: linear-gradient(#FF6C29, #FE4437);
 $blue: linear-gradient(#57A7EC, #6D74D2, #8936B2);
 $magenta: linear-gradient(#E7125E, #B61F82, #8A2BA1);
 $skyblue: #5468FF;
+$skyblue20: #5468FF20;
 
 @mixin logo {
     font-family: "Monoton";

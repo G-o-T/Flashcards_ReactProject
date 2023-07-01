@@ -2,6 +2,7 @@
 :root {
   --bg-color: #1F1C3A;
   --color: #ffffff;
+  --text: #A5A4B0;
   font-size: 10px;
   font-style: normal;
   color: var(--color);
@@ -14,13 +15,20 @@
   font-family: "Monoton";
   font-size: 42px;
   line-height: 100%;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .offer {
+  margin-top: 35vh;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 70px;
 }
 .offer__desc {
   display: flex;
@@ -44,11 +52,69 @@
   display: flex;
   gap: 32px;
 }
+.offer__cards {
+  position: relative;
+}
+.offer__card {
+  position: absolute;
+  filter: drop-shadow(0px 8px 16px var(--bg-color));
+}
+.offer__card:hover .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+.offer__card:hover .back {
+  transform: perspective(600px) rotateY(0);
+}
+.offer__card_far {
+  top: -260px;
+  left: 140px;
+  transform: rotate(-23deg);
+}
+.offer__card_near {
+  cursor: pointer;
+  left: 150px;
+}
+.offer__img {
+  width: 336px;
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.3s ease;
+}
+
+.front {
+  transform: perspective(600px) rotateY(0);
+}
+
+.back {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .header {
+  position: fixed;
+  width: 90vw;
+  padding: 32px 0;
+  background: linear-gradient(var(--bg-color), 80%, transparent);
+  z-index: 10;
+}
+.header__container {
+  max-width: 1400px;
   display: flex;
   justify-content: space-between;
-  margin: 32px 0;
+  align-items: center;
 }
 
 .menu__list {
@@ -67,11 +133,10 @@
   color: var(--color);
 }
 .menu__link:hover {
-  font-size: 20px;
-  line-height: 120%;
-  font-weight: 400;
   opacity: 1;
-  color: var(--color);
+}
+.menu__link_active {
+  opacity: 1;
 }
 
 .btn {
@@ -88,7 +153,7 @@
   cursor: pointer;
 }
 .btn:hover {
-  filter: drop-shadow(0px 0px 8px rgba(84, 104, 255, 0.6));
+  filter: drop-shadow(0px 0px 16px rgba(15, 38, 211, 0.6));
 }
 
 .footer {
@@ -96,7 +161,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-bottom: 32px;
+  margin: 70px 0 32px;
 }
 
 .copyright {
@@ -108,9 +173,65 @@
   font-size: 14px;
 }
 
+.table {
+  display: flex;
+  justify-content: center;
+}
+.table__container {
+  height: 20vh;
+  overflow-y: scroll;
+  overflow-x: visible;
+  display: flex;
+  flex-direction: column;
+}
+.table__container::-webkit-scrollbar {
+  width: 6px;
+  background-color: rgba(84, 104, 255, 0.1254901961);
+  border-radius: 5px;
+}
+.table__container::-webkit-scrollbar-thumb {
+  background-color: #5468FF;
+  border-radius: 5px;
+}
+.table__row {
+  width: 1232px;
+  display: grid;
+  grid-template-columns: 20% 30% 18% 23% 8%;
+  grid-row: 1fr;
+}
+.table__row:hover {
+  background-color: rgba(84, 104, 255, 0.1254901961);
+  border-radius: 50px 0 0 50px;
+  filter: drop-shadow(0px 0px 10px #5468FF);
+}
+.table__cell {
+  padding: 10px 0 10px 40px;
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 600;
+  opacity: 0.6;
+  color: var(--color);
+  font-weight: 400;
+}
+.table__cell_main {
+  color: var(--color);
+  opacity: 1;
+}
+.table__btns {
+  display: flex;
+  gap: 20px;
+}
+.table__btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  scrollbar-width: 6px;
+  scrollbar-color: rgba(84, 104, 255, 0.1254901961);
 }
 
 *,
@@ -166,4 +287,25 @@ body {
   -webkit-text-fill-color: transparent;
   color: var(--bg-color);
   display: table;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 600;
+  opacity: 1;
+  color: var(--color);
+  text-transform: uppercase;
+  text-align: right;
+  margin: 168px 0 70px;
+}
+
+.warning {
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 600;
+  opacity: 1;
+  color: rgba(84, 104, 255, 0.1254901961);
+  text-align: center;
+  margin: 168px 0 70px;
 }

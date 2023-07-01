@@ -1,0 +1,74 @@
+.table {
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        // max-width: 1232px;
+        height: 20vh;
+        overflow-y: scroll;
+        overflow-x: visible;
+        display: flex;
+        flex-direction: column;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            background-color: $skyblue20;
+            border-radius: 5px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: $skyblue;
+            border-radius: 5px;
+        }
+    }
+
+    &__row {
+        width: 1232px;
+        display: grid;
+        grid-template-columns: 20% 30% 18% 23% 8%;
+        grid-row: 1fr;
+
+        &:hover {
+            background-color: $skyblue20;
+            border-radius: 50px 0 0 50px;
+            filter: drop-shadow(0px 0px 10px $skyblue);
+        }
+    }
+
+    &__cell {
+        padding: 10px 0 10px 40px ;
+        @include m-text(0.6, var(--color));
+        font-weight: 400;
+
+        &_main {
+            color: var(--color);
+            opacity: 1;
+        }
+
+        // &_meaning {
+        //     width: 310px;
+        // }
+
+        // &_transc {
+        //     width: 292px;
+        // }
+
+        // &_tag {
+        //     width: 300px;
+        // }
+    }
+
+    &__btns {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+
+
+}

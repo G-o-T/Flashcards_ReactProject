@@ -1,15 +1,12 @@
 import React from "react";
+import MenuItemsList from "./MenuItemsList";
 
 function Navbar() {
+
     return (
         <nav className="menu">
             <ul className="menu__list">
-                <li className="menu__item">
-                    <button className="menu__link menu__link_active">dictionary</button>
-                </li>
-                <li className="menu__item">
-                    <button className="menu__link">flashcards</button>
-                </li>
+                <MenuItemsList />
             </ul>
         </nav>
     )
