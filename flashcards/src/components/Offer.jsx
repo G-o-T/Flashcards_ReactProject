@@ -16,8 +16,8 @@ function Offer() {
                     </div>
                 </h1>
                 <div className="offer__btns">
-                    <Button text="start training"></Button>
-                    <Button text="dictionary"></Button>
+                    <Button>start training</Button>
+                    <Button>dictionary</Button>
                 </div>
             </div>
             <div className="offer__cards">

@@ -1,9 +1,6 @@
 import React from "react";
-// import { useState } from "react";
 
 function WordRow({data}) {
-
-    // const [state, setState] = useState('dis')
 
     const editWord = () => {
         console.log('Слово хотят отредактировать');

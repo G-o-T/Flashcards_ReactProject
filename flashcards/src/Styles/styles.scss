@@ -8,6 +8,9 @@
 @import "./button";
 @import "./footer";
 @import "./table";
+@import "./input";
+@import "./form";
+@import "./dictionary";
 
 
 html {
@@ -64,7 +67,8 @@ body {
 }
 
 .warning {
-    @include m-text(1, $skyblue20);
+    @include s-text(.6, var(--color));
     text-align: center;
-    margin: 168px 0 70px;
+    margin: 70px 0;
 }
+

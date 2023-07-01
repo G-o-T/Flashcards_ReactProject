@@ -1,0 +1,16 @@
+{
+	"react component snippet": {
+		"scope": "javascript,typescript",
+		"prefix": "qwe",
+		"body": [
+			"import React from \"react\";",
+			"function x() {",	
+			"return (",
+			"$1",
+			")",
+			"}",
+			"export default x;",
+		],
+		"description": "snippet for react component"
+	}
+}
