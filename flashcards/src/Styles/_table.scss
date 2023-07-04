@@ -4,7 +4,8 @@
 
     &__container {
         // max-width: 1232px;
-        height: 60vh;
+        height: fit-content;
+        max-height: 50vh;
         overflow-y: scroll;
         overflow-x: visible;
         display: flex;

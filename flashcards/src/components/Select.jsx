@@ -9,7 +9,7 @@ function Select({options, defaultValue, value, onChange}) {
             >
             <option disabled value="">{defaultValue}</option>
             {options.map(option => 
-                <option value={option}>
+                <option value={option} key={option}>
                         {option}
                     </option>)}
 

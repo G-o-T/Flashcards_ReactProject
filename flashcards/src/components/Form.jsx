@@ -6,6 +6,7 @@ import Button from "./Button";
 function Form({create}) {
 
     const [newWord, setNewWord] = useState({
+        id: Date.now(),
         english: '',
         russian: '',
         transcription: '',
@@ -18,6 +19,7 @@ function Form({create}) {
         create(newWord);
 
         setNewWord({
+            id: Date.now(),
             english: '',
             russian: '',
             transcription: '',
