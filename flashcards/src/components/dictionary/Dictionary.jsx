@@ -1,59 +1,80 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Title from "../Title";
 import Select from "../Select";
 import WordRow from "./WordRow";
 import { wordsData } from "../../testData";
-import { useState } from "react";
 import Form from "../Form";
-import SearchForm from "../SearchForm";
-
 
 function Dictionary() {
     const [words, setWords] = useState(wordsData);
     const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
-
+    const [selectedSort, setSelectedSort] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
-    const [selectedSort, setSelectedSort] = useState('');
-
-    //Функция для фильтрации слов по теме
-    const sortWords = (sort) => {
-        console.log(wordsData);
-        setWords(wordsData);
-        setSelectedSort(sort);
-        setWords([...words].filter(w => w.tags === sort));
-        console.log(sort);
-        console.log(words.map(w => w.tags));
-    }
+    //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
+    const sortedWords = useMemo(() => {
+        if(selectedSort) {
+            return [...words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
+        }
+        return words;
+    }, [selectedSort, words]);
 
     //Функция для добавления новых слов
     const createWord = (newWord) => {
         setWords([...words, newWord]);
         setKeys([...keys, newWord.tags]);
-    }
+    };
 
     //Функция для удаления слов
     const removeWord = (currentWord) => {
         setWords(words.filter(w => w.id !== currentWord.id));
-    } 
+    };
+
+    //Функция для сортировки слов 
+    const sortWords = (sort) => {
+        setSelectedSort(sort);
+    };
+
+    //Функция для поиска слов 
+    const sortedAndSearchedWords = useMemo(() => {
+        return sortedWords.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
+    }, [searchQuery, sortedWords])
 
     return (
         <main className="dictionary">
             <Title title="dictionary"/>
             <div className="dictionary__container">
-                <SearchForm />
                 <Select
+                    defaultValue="sort"
+                    options={[
+                        {value: 'english', name: 'sort by word'}, 
+                        {value: 'russian', name: 'sort by meaning'}
+                    ]}
+                    value={selectedSort}
+                    onChange={sortWords}
+                    >
+                </Select>
+                <div className="search-form">
+                    <input 
+                        type="text" 
+                        className="search-form__search-field" 
+                        placeholder="search" 
+                        value={searchQuery}
+                        onChange={e => setSearchQuery(e.target.value)}
+                    />
+                </div>
+                {/* <Select
                     value={selectedSort}
                     onChange={sortWords}
                     defaultValue="filter out per topics"  
                     options={keys}        
-                />
+                /> */}
             </div>
             <div className="table">
                 {words.length 
                 ? 
                 <div className="table__container">
-                    {words.map(word => <WordRow remove={removeWord} data={word} key={word.id}/>)}
+                    {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id}/>)}
                 </div>
                 :
                 <div className="warning">There are no words in the dictionary yet</div>

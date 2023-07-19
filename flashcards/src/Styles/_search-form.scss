@@ -2,12 +2,11 @@
     display: flex;
 
     &__search-field {
-        width: 619px;
+        width: 600px;
         margin-right: -25px;
         background-color: transparent;
-        border-radius: 50px 0 0 50px;
+        border-radius: 50px;
         border: 2px solid $skyblue;
-        border-right: none;
         padding: 9px 32px;
         @include s-text(1, var(--color));
     
