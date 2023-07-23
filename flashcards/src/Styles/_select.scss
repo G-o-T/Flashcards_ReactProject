@@ -1,3 +1,12 @@
-// . select {
-    
-// }
+.select {
+    width: 30%;
+    background-color: var(--bg-color);
+    border-radius: 50px;
+    border: 2px solid $skyblue;
+    padding: 9px 32px;
+    @include s-text(1, $skyblue);
+
+    &:focus {
+        outline: none;
+    }
+}

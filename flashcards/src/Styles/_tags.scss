@@ -1,0 +1,42 @@
+.tags {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    align-items: center;
+
+    &__container {
+        display: flex;
+        column-gap: 80px;
+        row-gap: 32px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__item {
+        display: block;
+        @include m-text(1, var(--text));
+        text-align: center;
+        font-weight: 400;
+        cursor: pointer;
+        transition: .3s;
+
+        &:after {
+            display: block;
+            content: attr(title);
+            font-weight: 600;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+
+        &:hover {
+            font-weight: 600;
+        }
+    }
+
+    &__error {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

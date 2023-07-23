@@ -50,7 +50,7 @@ function Form({create}) {
                 value={newWord.tags}
                 onChange={e => setNewWord({...newWord, tags: e.target.value})}
             />
-            <Button onClick={addWord}>add word</Button>
+            <Button onClick={addWord} className='btn'>add word</Button>
         </form>
     )
 }
