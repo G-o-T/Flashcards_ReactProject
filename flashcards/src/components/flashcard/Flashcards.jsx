@@ -5,10 +5,12 @@ import Cards from "./Cards";
 
 function Flashcards() {
     return (
-        <main className="flashcards">
-            <Title title="flashcards"/>
-            <Tags />
-            <Cards />
+        <main className="main">
+            <div className="flashcards margin38">
+                <Title title="flashcards"/>
+                <Tags />
+                <Cards />
+            </div>
         </main>
     )
 }

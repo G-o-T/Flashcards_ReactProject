@@ -38,6 +38,10 @@ body {
     font-family: "Lato";
 }
 
+a {
+    text-decoration: none;
+}
+
 .App {
     display: flex;
     flex-direction: column;
@@ -67,13 +71,26 @@ body {
 .title {
     @include m-text(1, var(--color));
     text-transform: uppercase;
-    text-align: right;
-    margin: 168px 0 70px;
+    text-align: center;
+    margin-bottom: 70px;
 }
 
 .warning {
     @include s-text(.6, var(--color));
     text-align: center;
     margin: 70px 0;
+}
+
+.main {
+    margin: 0 auto;
+}
+
+.margin35 {
+    
+    margin-top: 35vh;
+}
+
+.margin38 {
+    margin-top: 138px;
 }
 

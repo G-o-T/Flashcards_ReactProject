@@ -1,5 +1,6 @@
 .logo {
     display: flex;
+    cursor: pointer;
 
     &__letter {
         @include logo;

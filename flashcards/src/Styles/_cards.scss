@@ -1,7 +1,8 @@
 .cards {
     display: flex;
-    margin: 168px 0;
+    margin-top: 168px;
     justify-content: space-between;
+    user-select: none;
 
     &__part {
         display: flex;

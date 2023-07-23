@@ -41,47 +41,49 @@ function Dictionary() {
     }, [searchQuery, sortedWords])
 
     return (
-        <main className="dictionary">
+        <main className="main margin38">
             <Title title="dictionary"/>
-            <div className="dictionary__container">
-                <Select
-                    defaultValue="sort"
-                    options={[
-                        {value: 'english', name: 'sort by word'}, 
-                        {value: 'russian', name: 'sort by meaning'}
-                    ]}
-                    value={selectedSort}
-                    onChange={sortWords}
-                    >
-                </Select>
-                <div className="search-form">
-                    <input 
-                        type="text" 
-                        className="search-form__search-field" 
-                        placeholder="search" 
-                        value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
-                    />
+            <div className="dictionary">
+                {/* <Title title="dictionary"/> */}
+                <div className="dictionary__container">
+                    <Select
+                        defaultValue="sort"
+                        options={[
+                            {value: 'english', name: 'sort by word'}, 
+                            {value: 'russian', name: 'sort by meaning'}
+                        ]}
+                        value={selectedSort}
+                        onChange={sortWords}
+                        >
+                    </Select>
+                    <div className="search-form">
+                        <input 
+                            type="text" 
+                            className="search-form__search-field" 
+                            placeholder="search" 
+                            value={searchQuery}
+                            onChange={e => setSearchQuery(e.target.value)}
+                        />
+                    </div>
+                    {/* <Select
+                        value={selectedSort}
+                        onChange={sortWords}
+                        defaultValue="filter out per topics"  
+                        options={keys}        
+                    /> */}
                 </div>
-                {/* <Select
-                    value={selectedSort}
-                    onChange={sortWords}
-                    defaultValue="filter out per topics"  
-                    options={keys}        
-                /> */}
-            </div>
-            <div className="table">
-                {words.length 
-                ? 
-                <div className="table__container">
-                    {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id}/>)}
+                <div className="table">
+                    {sortedAndSearchedWords.length 
+                    ? 
+                    <div className="table__container">
+                        {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id}/>)}
+                    </div>
+                    :
+                    <div className="warning">There are no words in the dictionary yet</div>
+                    }
                 </div>
-                :
-                <div className="warning">There are no words in the dictionary yet</div>
-                }
-
+                <Form create={createWord}/>
             </div>
-            <Form create={createWord}/>
         </main>
     )
 

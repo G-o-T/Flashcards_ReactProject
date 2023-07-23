@@ -5,7 +5,7 @@ import Logo from "./Logo";
 function Footer() {
     return (
         <footer className="footer">
-            <Logo></Logo>
+            <Logo />
             <p className="copyright">Developed by Volya Gotovtseva</p>
         </footer>
     )

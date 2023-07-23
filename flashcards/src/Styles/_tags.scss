@@ -1,13 +1,13 @@
 .tags {
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 32px;
     align-items: center;
 
     &__container {
         display: flex;
-        column-gap: 80px;
-        row-gap: 32px;
+        column-gap: 32px;
+        row-gap: 12px;
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -15,8 +15,10 @@
     &__item {
         display: block;
         @include m-text(1, var(--text));
+        font-size: 20px;
         text-align: center;
         font-weight: 400;
+        border: none;
         cursor: pointer;
         transition: .3s;
 

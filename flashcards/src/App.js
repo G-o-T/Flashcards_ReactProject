@@ -1,18 +1,30 @@
 import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Offer from './components/Offer';
-import Dictionary from './components/dictionary/Dictionary';
-import Flashcards from './components/flashcard/Flashcards';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import MainPage from './pages/MainPage';
+import FlashcardsPage from './pages/FlashcardsPage';
+import ErrorPage from './pages/MainPage';
+import OfferPage from './pages/OfferPage';
+import Header from "./components/Header";
+
 
 function App() {
+
   return (
     <div className="App">
-      <Header />
-      <Offer />
-      <Dictionary />
-      <Flashcards />
-      <Footer />
+      <Router>
+        <Header />
+
+        <Routes>
+          <Route exact path="/dictionary" element={<MainPage />} />
+          <Route path="/flashcards" element={<FlashcardsPage />} />
+          <Route path="/start" element={<OfferPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

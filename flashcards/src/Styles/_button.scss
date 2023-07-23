@@ -18,10 +18,10 @@
 }
 
 .card-btn {
-    padding: 20px;
     border: none;
     background: none;
     @include m-text(1, $skyblue98);
+    line-height: 80px;
     font-weight: 300;
     cursor: pointer;
 
@@ -31,5 +31,26 @@
 
     &:active {
         color: $skyblue;
+    }
+}
+
+.link-btn {
+    text-align: center;
+    width: 232px;
+    height: 50px;
+    border: none;
+    background-color: $skyblue;
+    border-radius: 50px;
+    @include m-text(1, var(--bg-color));
+    line-height: 50px;
+    cursor: pointer;
+
+    &:hover {
+        filter: drop-shadow(0px 0px 16px rgba(15, 38, 211, 0.6));
+    }
+
+    &:focus {
+        outline: none;
+        filter: drop-shadow(0px 0px 16px rgba(15, 38, 211, 0.6));
     }
 }

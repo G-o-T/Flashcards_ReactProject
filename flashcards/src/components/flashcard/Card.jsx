@@ -36,8 +36,8 @@ function Card(props) {
                 </div>
             </div> */}
             <div className="card__btns">
-                <Button className='card__btn card__btn_failure text-orange'>don’t know</Button>
-                <Button className='card__btn card__btn_success text-blue'>know</Button>
+                <Button className='card__btn card__btn_failure text-orange'>{props.btnLeft}</Button>
+                <Button className='card__btn card__btn_success text-blue'>{props.btnRight}</Button>
             </div>
         </div>
     )
