@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import MainPage from './pages/MainPage';
 import FlashcardsPage from './pages/FlashcardsPage';
-import ErrorPage from './pages/MainPage';
+import ErrorPage from './pages/ErrorPage';
 import OfferPage from './pages/OfferPage';
 import Header from "./components/Header";
 
@@ -19,7 +19,7 @@ function App() {
         <Header />
 
         <Routes>
-          <Route exact path="/dictionary" element={<MainPage />} />
+          <Route path="/dictionary" element={<MainPage />} />
           <Route path="/flashcards" element={<FlashcardsPage />} />
           <Route path="/start" element={<OfferPage />} />
           <Route path="*" element={<ErrorPage />} />
