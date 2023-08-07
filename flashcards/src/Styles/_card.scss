@@ -4,19 +4,25 @@
     width: 600px;
     height: 300px;
     border-radius: 16px;
-    background-color: var(--color);
+
+    &__field-container {
+        cursor: pointer;
+        border: none;
+        border-radius: 16px 16px 0 0;
+    }
 
     &__field {
         display: flex;
         flex-direction: column;
+        height: 220px;
         border-radius: 16px 16px 0 0;
-        cursor: pointer;
 
         &_obverse {
             background: $magenta;
+            color: var(--color);
         }
-
         &_reverse {
+            background: var(--color);
             color: var(--bg-color);
         }
     }
@@ -25,10 +31,11 @@
         display: grid;
         height: 80px;
         grid-template-columns: 1fr 1fr;
+        background: var(--color);
+        border-radius: 0 0 16px 16px ;
     }
 
     &__btn {
-        background: none;
         border: none;
         @include m-text(1, var(--bg-color));
         box-shadow: 0px 4px 4px 0px var(--shadow-light) inset;
@@ -42,14 +49,6 @@
         &:active {
             box-shadow: 0px 8px 8px 0px var(--shadow-strong) inset;
         }
-
-        // &_failure {
-            
-        // }
-
-        // &_success {
-        //     box-shadow: 0px 4px 4px 0px var(--shadow) inset;
-        // }
     }
 
     &__add-info {

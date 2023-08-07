@@ -1,5 +1,6 @@
 :root {
     --bg-color: #1F1C3A;
+    --bg-color-modal: #100e1b90;
     --color: #ffffff;
     --text: #A5A4B0;
     --shadow-strong: #1F1C3A55;
@@ -15,6 +16,7 @@ $blue: linear-gradient(#57A7EC, #6D74D2, #8936B2);
 $magenta: linear-gradient(#E7125E, #B61F82, #8A2BA1);
 $skyblue: #5468FF;
 $skyblue20: #5468FF20;
+$skyblue60: #5468FF60;
 $skyblue98: #5468FF98;
 $flame: #FE4437;
 
@@ -56,7 +58,7 @@ $flame: #FE4437;
 }
 
 @mixin card-add-text {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 120%;
     font-weight: 600;
 }

@@ -10,6 +10,8 @@ function Dictionary() {
     const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
     const [selectedSort, setSelectedSort] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
+    // const [word, setWord] = useState(words.id);
+
 
     //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
     const sortedWords = useMemo(() => {
@@ -23,6 +25,11 @@ function Dictionary() {
     const createWord = (newWord) => {
         setWords([...words, newWord]);
         setKeys([...keys, newWord.tags]);
+    };
+
+    //Черновая (пока не доработана) функция для редактирования слов
+    const editWord = (editedWord) => {
+        setWords([...words, editedWord]);
     };
 
     //Функция для удаления слов
@@ -44,7 +51,6 @@ function Dictionary() {
         <main className="main margin38">
             <Title title="dictionary"/>
             <div className="dictionary">
-                {/* <Title title="dictionary"/> */}
                 <div className="dictionary__container">
                     <Select
                         defaultValue="sort"
@@ -76,7 +82,7 @@ function Dictionary() {
                     {sortedAndSearchedWords.length 
                     ? 
                     <div className="table__container">
-                        {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id}/>)}
+                        {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id} edit={editWord}/>)}
                     </div>
                     :
                     <div className="warning">There are no words in the dictionary yet</div>

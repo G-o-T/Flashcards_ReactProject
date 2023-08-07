@@ -3,14 +3,16 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
 
+    const seActive = ({ isActive }) => isActive ? "menu__link menu__link_active" : "menu__link";
+
     return (
         <nav className="menu">
             <ul className="menu__list">
                 <li className="menu__item">
-                    <NavLink className={({ isActive }) => isActive ? "menu__link menu__link_active" : "menu__link"} to="/dictionary" end>dictionary</NavLink>
+                    <NavLink className={seActive} to="/dictionary">dictionary</NavLink>
                 </li>
                 <li className="menu__item">
-                    <NavLink className={({ isActive }) => isActive ? "menu__link menu__link_active" : "menu__link"} to="/flashcards" end>flashcards</NavLink>
+                    <NavLink className={seActive} to="/flashcards">flashcards</NavLink>
                 </li>
             </ul>
         </nav>
