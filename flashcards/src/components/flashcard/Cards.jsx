@@ -10,7 +10,7 @@ function Cards() {
     const [index, setIndex] = useState(0);
     const [successScore, setSuccessScore] = useState(0);
     const [failureScore, setFailureScore] = useState(0);
-    const [pressed, setPressed] = useState("on");
+    const [showBack, setShowBack] = useState(true);
     const [flash, setFlash] = useState("off");
 
     let w = wordsData[index];
@@ -28,6 +28,7 @@ function Cards() {
 
     function restartTraining() {
         setIndex(0); 
+        setShowBack(true);
         setSuccessScore(0);
         setFailureScore(0); 
     }
@@ -36,7 +37,7 @@ function Cards() {
         e.stopPropagation();
         showNextCard();
         setFlash("flashSuccess");
-        setPressed("off");
+        setShowBack(true);
         if (index < tagWords.length) {
             setSuccessScore(prevState => prevState + 1);
         }
@@ -47,7 +48,7 @@ function Cards() {
         e.stopPropagation();
         showNextCard();
         setFlash("flashFailure");
-        setPressed("off");
+        setShowBack(true);
         if (index < tagWords.length) {
             setFailureScore(prevState => prevState + 1);
         }
@@ -55,7 +56,7 @@ function Cards() {
     }
 
     function turnCard() {
-        pressed === "off" ? setPressed("on") : setPressed("off");
+        setShowBack((v) => !v)
     }
 
     function hideFlash() {
@@ -71,7 +72,7 @@ function Cards() {
                 <Button className='card-btn' onClick={restartTraining}>restart</Button>
             </div>
 
-            <Card pressed={pressed} tag={w.tags} index={index +1} length={tagWords.length} word={w.english} meaning={w.russian} transcription={w.transcription} failureAction={failureAction} successAction={successAction} restartTraining={restartTraining} successScore={successScore} failureScore={failureScore} onClick={turnCard}/>
+            <Card showBack={showBack} tag={w.tags} index={index} length={tagWords.length} word={w.english} meaning={w.russian} transcription={w.transcription} failureAction={failureAction} successAction={successAction} restartTraining={restartTraining} successScore={successScore} failureScore={failureScore} onClick={turnCard}/>
 
             <div className="cards__part">
                 <Field flash={flash} type='success' score={successScore}/>

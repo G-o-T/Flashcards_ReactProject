@@ -80,7 +80,7 @@ function Dictionary() {
                 </div>
                 <div className="table">
                     {sortedAndSearchedWords.length 
-                    ? 
+                    ?
                     <div className="table__container">
                         {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id} edit={editWord}/>)}
                     </div>

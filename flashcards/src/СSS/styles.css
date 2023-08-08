@@ -463,17 +463,29 @@
   width: 600px;
   height: 300px;
   border-radius: 16px;
+  perspective: 1000px;
 }
 .card__field-container {
+  width: 600px;
+  height: 220px;
+  position: relative;
   cursor: pointer;
   border: none;
   border-radius: 16px 16px 0 0;
+  transform-style: preserve-3d;
+  transition: transform 100ms;
 }
 .card__field {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   display: flex;
   flex-direction: column;
   height: 220px;
   border-radius: 16px 16px 0 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .card__field_obverse {
   background: linear-gradient(#E7125E, #B61F82, #8A2BA1);
@@ -482,6 +494,7 @@
 .card__field_reverse {
   background: var(--color);
   color: var(--bg-color);
+  transform: rotateY(180deg);
 }
 .card__btns {
   display: grid;
@@ -536,6 +549,33 @@
   font-size: 24px;
   line-height: 120%;
   font-weight: 400;
+}
+
+.flip-exit {
+  transform: rotateY(0deg);
+}
+
+.flip-exit-active {
+  transform: rotateY(180deg);
+  transition: transform 300ms;
+  transition-timing-function: cubic-bezier(0.57, 0.21, 1.69, 1.25);
+}
+
+.flip-exit-done {
+  transform: rotateY(180deg);
+}
+
+.flip-enter {
+  transform: rotateY(180deg);
+}
+
+.flip-enter-active {
+  transform: rotateY(0deg);
+  transition: transform 300ms;
+}
+
+.flip-enter-done {
+  transform: rotateY(0deg);
 }
 
 .modal {
