@@ -12,7 +12,7 @@ function Navbar() {
                     <NavLink className={seActive} to="/dictionary">dictionary</NavLink>
                 </li>
                 <li className="menu__item">
-                    <NavLink className={seActive} to="/flashcards">flashcards</NavLink>
+                    <NavLink className={seActive} to="/training">flashcards</NavLink>
                 </li>
             </ul>
         </nav>

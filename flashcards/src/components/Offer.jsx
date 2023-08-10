@@ -18,7 +18,7 @@ function Offer() {
                         </div>
                     </h1>
                     <div className="offer__btns">
-                        <Link className='link-btn' to="/flashcards">start training</Link>
+                        <Link className='link-btn' to="/training">start training</Link>
                         <Link className='link-btn' to="/dictionary">dictionary</Link>
                     </div>
                 </div>

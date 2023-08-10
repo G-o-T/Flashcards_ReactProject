@@ -21,7 +21,7 @@ function App() {
             <Route index element={<Offer />} />
             {/* <Route index element={<Dictionary />} /> */}
             <Route path="dictionary" element={<Dictionary />} />
-            <Route path="flashcards" element={<Flashcards />} />
+            <Route path="training" element={<Flashcards />} />
             <Route path="start" element={<Offer />} />
             <Route path="*" element={<Page404 />} />
           </Route>
