@@ -42,6 +42,23 @@
         gap: 70px;
     }
 
+    &__question {
+        @include s-text(.6, var(--color));
+        text-align: center;
+        margin: 32px 0;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+    }
+
     &__group {
         display: flex;
         gap: 8px;
@@ -62,10 +79,25 @@
             filter: drop-shadow(0px 0px 16px rgba(15, 38, 211, 0.6));
         }
 
+        &:disabled {
+            background-color: $skyblue60;
+            cursor: auto;
+        }
+
         &_colored {
             border: none;
             background-color: $skyblue;
             @include m-text(1, var(--bg-color));
+        }
+
+        &_colored-red {
+            border: none;
+            background-color: $flame;
+            @include m-text(1, var(--bg-color));
+
+            &:hover {
+                filter: drop-shadow(0px 0px 16px #E7125E60);
+            }
         }
 
 

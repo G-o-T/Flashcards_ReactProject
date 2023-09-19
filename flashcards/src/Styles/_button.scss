@@ -15,6 +15,11 @@
         outline: none;
         filter: drop-shadow(0px 0px 16px rgba(15, 38, 211, 0.6));
     }
+
+    &:disabled {
+        background-color: $skyblue60;
+        cursor: auto;
+    }
 }
 
 .card-btn {

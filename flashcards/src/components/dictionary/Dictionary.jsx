@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Title from "../Title";
 import Select from "../Select";
 import WordRow from "./WordRow";
@@ -10,8 +10,20 @@ function Dictionary() {
     const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
     const [selectedSort, setSelectedSort] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
-    // const [word, setWord] = useState(words.id);
 
+    //Функция для редактирования слов
+
+    const editWord = (editedWord, currentId) => {
+        const updatedWord = words.filter(w => w.id == currentId);
+        updatedWord.id = currentId;
+        updatedWord.english = editedWord.english;
+        updatedWord.russian = editedWord.russian;
+        updatedWord.transcription = editedWord.transcription;
+        updatedWord.tags = editedWord.tags;
+
+        const restWords = words.filter(w => w.id !== currentId);
+        setWords([updatedWord, ...restWords]);       
+    }
 
     //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
     const sortedWords = useMemo(() => {
@@ -23,18 +35,16 @@ function Dictionary() {
 
     //Функция для добавления новых слов
     const createWord = (newWord) => {
-        setWords([...words, newWord]);
+        setWords([newWord, ...words]);
         setKeys([...keys, newWord.tags]);
     };
 
-    //Черновая (пока не доработана) функция для редактирования слов
-    const editWord = (editedWord) => {
-        setWords([...words, editedWord]);
-    };
+
 
     //Функция для удаления слов
     const removeWord = (currentWord) => {
         setWords(words.filter(w => w.id !== currentWord.id));
+        console.log("success");
     };
 
     //Функция для сортировки слов 

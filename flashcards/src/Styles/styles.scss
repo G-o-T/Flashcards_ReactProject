@@ -18,6 +18,7 @@
 @import "./cards";
 @import "./card";
 @import "./modal";
+@import "./error";
 
 html {
     box-sizing: border-box;
@@ -87,7 +88,6 @@ a {
 }
 
 .margin35 {
-    
     margin-top: 35vh;
 }
 

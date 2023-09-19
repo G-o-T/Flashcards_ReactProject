@@ -3,7 +3,7 @@ import React from "react";
 function Input(props) {
 
     return (
-        <input type="text" className="input" {...props} />
+        <input type="text" className={props.className} {...props} />
     )
 
 }

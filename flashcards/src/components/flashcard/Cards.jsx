@@ -13,6 +13,8 @@ function Cards() {
     const [failureScore, setFailureScore] = useState(0);
     const [showBack, setShowBack] = useState(true);
     const [flash, setFlash] = useState("off");
+
+    //Для задания 27 недели. Показывает "сколько слов изучено за одну тренировку"
     const learnedWord = useRef(0);
 
     let w = wordsData[index];

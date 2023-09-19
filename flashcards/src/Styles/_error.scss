@@ -1,0 +1,15 @@
+.error {
+    padding: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+
+    &__container {
+        max-width: 227px;
+        @include s-text(0.6, $flame);
+        font-size: 14px;
+        text-align: center;
+    }
+    
+}
