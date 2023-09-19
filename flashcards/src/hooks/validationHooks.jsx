@@ -16,7 +16,7 @@ const useValidation = (value, validations) => {
         for (const validation in validations) {
             switch (validation) {
                 case 'isEmptyError':
-                    value ? setEmptyError(false) : setEmptyError(true);
+                    value.trim() ? setEmptyError(false) : setEmptyError(true);
                     break;
                 case 'latinError':
                     latinRegEx.test(String(value).toLowerCase()) ? setLatinError(false) : setLatinError(true);
