@@ -32,9 +32,18 @@ const useValidation = (value, validations) => {
     useEffect(() => {
 
         const errorTexts = [
-            "The field cannot be empty",
-            "The word must be written in Latin",
-            "The meaning must be written in Cyrillic"
+            {
+                id: 0,
+                text: "The field cannot be empty"
+            },
+            {
+                id: 1,
+                text: "The word must be written in Latin"
+            },
+            {
+                id: 2,
+                text: "The meaning must be written in Cyrillic"
+            }
         ]
 
         for (const validation in validations) {

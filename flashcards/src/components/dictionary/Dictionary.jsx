@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import Title from "../Title";
 import Select from "../Select";
 import WordRow from "./WordRow";
@@ -14,7 +14,7 @@ function Dictionary() {
     //Функция для редактирования слов
 
     const editWord = (editedWord, currentId) => {
-        const updatedWord = words.filter(w => w.id == currentId);
+        const updatedWord = words.filter(w => w.id === currentId);
         updatedWord.id = currentId;
         updatedWord.english = editedWord.english;
         updatedWord.russian = editedWord.russian;
@@ -44,7 +44,6 @@ function Dictionary() {
     //Функция для удаления слов
     const removeWord = (currentWord) => {
         setWords(words.filter(w => w.id !== currentWord.id));
-        console.log("success");
     };
 
     //Функция для сортировки слов 

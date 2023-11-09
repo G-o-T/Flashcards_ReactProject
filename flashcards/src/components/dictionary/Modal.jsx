@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "../Button";
 import Input from "../Input";
 import { useInput } from "../../hooks/validationHooks";
@@ -23,7 +23,6 @@ function Modal({active, setActive, data, edit}) {
             tags: tags.value,
         }
 
-        console.log(editedWord);
         edit(editedWord, data.id);
         setActive(false);
     }

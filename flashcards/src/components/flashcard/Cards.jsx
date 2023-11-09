@@ -68,7 +68,6 @@ function Cards() {
     function turnCard() {
         setShowBack((v) => !v);
         learnedWord.current++;
-        console.log(learnedWord.current);
     }
 
     //Убирает вспышку, свидетельствующую об увеличении количества запомненных/еще не выученных слов 
@@ -145,7 +144,7 @@ function Cards() {
             }
             <div className="cards__part">
                 <Field flash={flash} type='success' score={successScore}/>
-                <Button className='card-btn' onClick={showPrevCard} disabled="true">back</Button>
+                <Button className='card-btn' onClick={showPrevCard} disabled={true}>back</Button>
             </div>  
         </div>
     )
