@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import CardObverse from "./flashcard/CardObverse";
-import CardReverse from "./flashcard/CardReverse";
+import CardObverse from "../Card/CardObverse";
+import CardReverse from "../Card/CardReverse";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import Button from "../UI/Button/Button";
 import { CSSTransition } from "react-transition-group";
 
 

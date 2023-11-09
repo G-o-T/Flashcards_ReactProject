@@ -1,7 +1,7 @@
 import React, { useState} from "react";
-import Modal from "./Modal";
-import ModalWindow from "../ModalWindow";
-import Button from "../Button";
+import EditField from "../UI/EditField/EditField";
+import ModalWindow from "../UI/ModalWindow.jsx/ModalWindow";
+import Button from "../UI/Button/Button";
 
 function WordRow({data, remove, edit}) {
 
@@ -25,7 +25,7 @@ function WordRow({data, remove, edit}) {
 
     return (
         <>
-            <Modal data={data} active={modalActive} setActive={setModalActive} edit={edit} remove={remove}></Modal>
+            <EditField data={data} active={modalActive} setActive={setModalActive} edit={edit} remove={remove}></EditField>
             <ModalWindow active={modalWindowActive} setActive={setModalWindowActive}>
                 <div className="modal-window">
                     <div className="modal__question">Are you sure you want to delete this word?</div>

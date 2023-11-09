@@ -1,7 +1,7 @@
 import React from "react";
-import Title from "../Title";
-import Tags from "./Tags";
-import Cards from "./Cards";
+import Title from "../../UI/Title/Title";
+import Tags from "../../Tags/Tags";
+import Cards from "../../Cards/Cards";
 
 function Flashcards() {
     return (

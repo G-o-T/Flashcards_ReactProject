@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "../Button";
-import Input from "../Input";
-import { useInput } from "../../hooks/validationHooks";
-import Error from "../Error";
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import { useInput } from "../../../hooks/validationHooks";
+import Error from "../Error/Error";
 
-function Modal({active, setActive, data, edit}) {
+function EditField({active, setActive, data, edit}) {
 
     const english = useInput(data.english, {isEmptyError: true, latinError: true});
     const russian = useInput(data.russian, {isEmptyError: true, cyrillicError: true});
@@ -99,4 +99,4 @@ function Modal({active, setActive, data, edit}) {
     )
 }
 
-export default Modal
+export default EditField;

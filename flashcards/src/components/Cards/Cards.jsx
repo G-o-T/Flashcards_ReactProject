@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import Field from "./Field";
-import Button from "../Button";
+import Field from "../Field/Field";
+import Button from "../UI/Button/Button";
 import { wordsData } from "../../testData";
-import Card from "./Card";
+import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 
 

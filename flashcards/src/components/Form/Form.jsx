@@ -1,8 +1,8 @@
 import React from "react";
-import Input from "./Input";
-import Button from "./Button";
-import { useInput } from "../hooks/validationHooks";
-import Error from "./Error";
+import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
+import { useInput } from "../../hooks/validationHooks";
+import Error from "../UI/Error/Error";
 
 
 

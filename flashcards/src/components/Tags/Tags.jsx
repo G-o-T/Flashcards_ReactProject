@@ -1,7 +1,7 @@
 import React from "react";
 import { wordsData } from "../../testData";
-import Button from "../Button";
-import Tag from "./Tag";
+import Button from "../UI/Button/Button";
+import Tag from "../Tag/Tag";
 
 function Tags() {
     const tags = [...new Set(wordsData.map(wordData => wordData.tags))];

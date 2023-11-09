@@ -5,11 +5,11 @@ import {
   Route,
 } from "react-router-dom";
 
-import Layout from "./components/Layout"
-import Dictionary from "./components/dictionary/Dictionary"
-import Flashcards from "./components/flashcard/Flashcards"
-import Offer  from "./components/Offer"
-import Page404 from "./components/Page404"
+import Layout from "./components/Pages/Layout";
+import Dictionary from "./components/Pages/Dictionary/Dictionary";
+import Flashcards from "./components/Pages/Flashcards/Flashcards";
+import Offer  from "./components/Pages/Offer/Offer";
+import Page404 from "./components/Pages/Page404";
 
 function App() {
 

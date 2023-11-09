@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from "react";
-import Title from "../Title";
-import Select from "../Select";
-import WordRow from "./WordRow";
-import { wordsData } from "../../testData";
-import Form from "../Form";
+import Title from "../../UI/Title/Title";
+import Select from "../../UI/Select/Select";
+import WordRow from "../../WordRow/WordRow";
+import { wordsData } from "../../../testData";
+import Form from "../../Form/Form";
 
 function Dictionary() {
     const [words, setWords] = useState(wordsData);

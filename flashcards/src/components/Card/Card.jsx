@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import CardObverse from "./CardObverse";
 import CardReverse from "./CardReverse";
-// import { Link } from "react-router-dom";
-import Button from "../Button";
+import Button from "../UI/Button/Button";
 import { CSSTransition } from "react-transition-group";
 
 function Card({tag, index, length, word, transcription, meaning, failureAction, successAction, restartTraining, onClick, showBack, btnLeftTitle, btnRightTitle, btnLeftAction, btnRightAction}) {
