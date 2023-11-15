@@ -7,7 +7,7 @@
 
     &__container {
         max-width: 227px;
-        @include s-text(0.6, $flame);
+        @include s-text(0.8, $flame);
         font-size: 14px;
         text-align: center;
     }

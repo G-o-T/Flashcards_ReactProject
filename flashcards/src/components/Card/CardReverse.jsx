@@ -8,7 +8,7 @@ function CardReverse({tag, index, length, meaning}) {
                 <div className="card__field card__field_reverse">
                     <div className="card__add-info">
                         <div className="card__tag">
-                            {'#'+ tag}
+                            {tag ? ('#'+tag) : ('# the topic not specified')}
                         </div>
                         <div className="card__number">
                             {index+' / '+length}

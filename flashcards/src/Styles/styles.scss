@@ -19,6 +19,8 @@
 @import "../components/Card/card";
 @import "../components/UI/ModalWindow.jsx/modal";
 @import "../components/UI/Error/error";
+@import "../components/UI/FetchError/fetchError";
+@import "../components/UI/Loading/loading";
 
 html {
     box-sizing: border-box;

@@ -1,14 +1,16 @@
-import React from "react";
-import { wordsData } from "../../testData";
+import React, { useContext} from "react";
+// import { wordsData } from "../../testData";
 import Button from "../UI/Button/Button";
 import Tag from "../Tag/Tag";
+import { WordsContext } from "../Context/WordsContext";
 
 function Tags() {
-    const tags = [...new Set(wordsData.map(wordData => wordData.tags))];
+    const wordsData = useContext(WordsContext);
+    const tags = [...new Set(wordsData.map(wordData => wordData.tags ? wordData.tags : 'the topic not specified'))]
 
     return (
         <div className="tags">
-            {tags.length 
+            {tags.length !== 0
                 ? 
                 <>
                 <div className="tags__container">

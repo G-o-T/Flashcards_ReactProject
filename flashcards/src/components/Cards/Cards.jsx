@@ -1,11 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Field from "../Field/Field";
 import Button from "../UI/Button/Button";
-import { wordsData } from "../../testData";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
-
-
+import { WordsContext } from "../Context/WordsContext";
 
 function Cards() {
     const [index, setIndex] = useState(0);
@@ -17,8 +15,8 @@ function Cards() {
     //Для задания 27 недели. Показывает "сколько слов изучено за одну тренировку"
     const learnedWord = useRef(0);
 
-    let w = wordsData[index];
-    let tagWords = wordsData;
+    let tagWords = useContext(WordsContext);
+    let w = tagWords[index];
 
     //Показывает следующую карточку
     function showNextCard() {

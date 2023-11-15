@@ -1,13 +1,18 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import Title from "../../UI/Title/Title";
 import Select from "../../UI/Select/Select";
 import WordRow from "../../WordRow/WordRow";
-import { wordsData } from "../../../testData";
 import Form from "../../Form/Form";
+import { WordsContext } from "../../Context/WordsContext";
 
 function Dictionary() {
-    const [words, setWords] = useState(wordsData);
-    const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
+    const initialWords = useContext(WordsContext);
+    // console.log(initialWords);
+    let [words, setWords] = useState(initialWords);
+    // console.log(words);
+
+    // const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
+    const [keys, setKeys] = useState([...new Set(words.map(wordData => wordData.tags))]);
     const [selectedSort, setSelectedSort] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -38,8 +43,6 @@ function Dictionary() {
         setWords([newWord, ...words]);
         setKeys([...keys, newWord.tags]);
     };
-
-
 
     //Функция для удаления слов
     const removeWord = (currentWord) => {
@@ -80,12 +83,6 @@ function Dictionary() {
                             onChange={e => setSearchQuery(e.target.value)}
                         />
                     </div>
-                    {/* <Select
-                        value={selectedSort}
-                        onChange={sortWords}
-                        defaultValue="filter out per topics"  
-                        options={keys}        
-                    /> */}
                 </div>
                 <div className="table">
                     {sortedAndSearchedWords.length 
