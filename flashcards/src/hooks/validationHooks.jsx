@@ -10,8 +10,8 @@ const useValidation = (value, validations) => {
     
     useEffect(() => {
 
-        const latinRegEx = /^[a-zA-Z0-9]+$/g;
-        const cyrillicRedEx = /^[а-яА-ЯёЁ0-9]+$/g;
+        const latinRegEx = /^[-().^+a-zA-Z0-9,\s]+$/g;
+        const cyrillicRedEx = /^[-().^+а-яА-ЯёЁ0-9,\s]+$/g;
 
         for (const validation in validations) {
             switch (validation) {

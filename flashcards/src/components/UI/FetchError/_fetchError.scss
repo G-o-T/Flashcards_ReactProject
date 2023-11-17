@@ -1,4 +1,6 @@
 .fetch-error {
+    display: flex;
+    margin: 20vh auto;
     @include s-text(0.9, $flame);
     font-size: 18px;
     text-align: center;

@@ -3,7 +3,7 @@ import EditField from "../UI/EditField/EditField";
 import ModalWindow from "../UI/ModalWindow.jsx/ModalWindow";
 import Button from "../UI/Button/Button";
 
-function WordRow({data, remove, edit}) {
+function WordRow({data, remove, edit, error}) {
 
     const [modalActive, setModalActive] = useState(false);
     const [modalWindowActive, setModalWindowActive] = useState(false);
@@ -25,7 +25,7 @@ function WordRow({data, remove, edit}) {
 
     return (
         <>
-            <EditField data={data} active={modalActive} setActive={setModalActive} edit={edit} remove={remove}></EditField>
+            <EditField data={data} active={modalActive} setActive={setModalActive} edit={edit} remove={remove} error={error}></EditField>
             <ModalWindow active={modalWindowActive} setActive={setModalWindowActive}>
                 <div className="modal-window">
                     <div className="modal__question">Are you sure you want to delete this word?</div>

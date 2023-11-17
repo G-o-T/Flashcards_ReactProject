@@ -9,41 +9,39 @@ function Words({children}) {
     const [error, setError] = useState(null);
 
     useEffect(() =>{ 
+
         const fetchWords = async () => {
             setIsLoading(true);
 
             try {
-                const response = await fetch('/api/words');     
+                const response = await fetch('/api/words');
+
+                if (!response.ok) {
+                    throw new Error('Server is down. Please try again')
+                }           
+
                 const words = await response.json();
                 setWords(words);
-            } catch (e) {
-                setError(e, e.message="Something went wrong. Please try again");
-                console.log(e.message);
+
+            } catch (err) {
+                // console.log(err.message);
+                setError(err.message);
             } finally {
                 setIsLoading(false);
             }
         }
 
         fetchWords();
-  }, []);
 
-  return (
+    }, []);
 
-    <>
+    return (
     <WordsContext.Provider value={words}>
-        {isLoading && <Loading />} 
-        {/* {error && <FetchError error={error.message} />} */}
-        {error && <div>{error.message}</div>}
-        {/* <ul>
-            {
-                words.map(word => {
-                    return <li key={word.id}>{word.english} - {word.russian} - {word.transcription}- {word.tags}</li>
-                })
-            }
-        </ul> */}
-        {(!error && !isLoading) && children}
+        {isLoading && <Loading />}
+        {error && <FetchError error={error} />}
+        {(!isLoading && words.length>0) && children}
     </WordsContext.Provider>
-    </>)
+    )
   
 }
 

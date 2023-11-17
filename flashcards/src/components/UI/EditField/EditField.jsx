@@ -3,8 +3,9 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useInput } from "../../../hooks/validationHooks";
 import Error from "../Error/Error";
+import FetchError from "../FetchError/FetchError";
 
-function EditField({active, setActive, data, edit}) {
+function EditField({active, setActive, data, edit, error}) {
 
     const english = useInput(data.english, {isEmptyError: true, latinError: true});
     const russian = useInput(data.russian, {isEmptyError: true, cyrillicError: true});
@@ -44,6 +45,7 @@ function EditField({active, setActive, data, edit}) {
     return (
         <div className={active ? "modal modal__active" : "modal"} onClick={(e) => onClickCancelHandler(e)}>
             <div className={active ? "modal__content modal__content_active" : "modal__content"} onClick={(e) => e.stopPropagation()}>
+                <FetchError error={error} />
                 <form className="modal__form">
                     <div className="modal__group">
                         <div className="modal__block">
