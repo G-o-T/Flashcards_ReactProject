@@ -55,13 +55,13 @@ function Dictionary() {
 
         //Эта часть функции добавляет слова на сервер, но она не нужна по условиям задания
 
-        // fetch( `api/words/add`, {
-        //     method: 'POST',
-        //     headers: { 'Content-type': 'application/json' },
-        //     body: JSON.stringify( newWord ),
-        // })
-        //     .then(() => console.log('word was added'))
-        //     .catch(error => console.log( `Error sending word to server: ${error}` ));
+        fetch( `api/words/add`, {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify( newWord ),
+        })
+            .then(() => console.log('word was added'))
+            .catch(error => console.log( `Error sending word to server: ${error}` ));
 
     };
 
@@ -71,12 +71,12 @@ function Dictionary() {
 
         //Эта часть функции удаляет слова на сервере, но она не нужна по условиям задания
 
-        // fetch( `api/words/${currentWord.id}/delete`, {
-        //     method: 'POST',
-        //     headers: { 'Content-type': 'application/json' },
-        // })
-        //     .then(() => console.log('word was deleted'))
-        //     .catch(error => console.log( `Error deleting word from server: ${error}` ));
+        fetch( `api/words/${currentWord.id}/delete`, {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+        })
+            .then(() => console.log('word was deleted'))
+            .catch(error => console.log( `Error deleting word from server: ${error}` ));
     };
 
     //Функция для сортировки слов 
