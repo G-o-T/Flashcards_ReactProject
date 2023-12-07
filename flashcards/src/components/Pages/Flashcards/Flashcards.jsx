@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "../../UI/Title/Title";
-import Tags from "../../Tags/Tags";
+// import Tags from "../../Tags/Tags";
 import Cards from "../../Cards/Cards";
 import Words from "../../Words/Words";
 
@@ -11,7 +11,7 @@ function Flashcards() {
             <Words>
                 <div className="flashcards margin38">
                     <Title title="flashcards"/>
-                    <Tags />
+                    {/* <Tags /> */}
                     <Cards />
                 </div>
             </Words>
