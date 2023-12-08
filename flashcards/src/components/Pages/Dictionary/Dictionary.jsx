@@ -1,67 +1,80 @@
-import React, { useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Title from "../../UI/Title/Title";
 import Select from "../../UI/Select/Select";
 import WordRow from "../../WordRow/WordRow";
-import { wordsData } from "../../../testData";
+// import { wordsData } from "../../../testData";
 import Form from "../../Form/Form";
+// import Loading from "../../UI/Loading/Loading";
+// import { wordsStore } from "../../../stores/WordsStore";
+import { wordsStore } from "../../../stores/WordsStore";
+import { observer } from 'mobx-react-lite';
+import Table from "../../Table/Table";
 
-function Dictionary() {
-    const [words, setWords] = useState(wordsData);
-    const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
-    const [selectedSort, setSelectedSort] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
+function DictionaryComponent() {
 
-    //Функция для редактирования слов
+    useEffect(() => {
+        wordsStore.setWords();
+    }, []);
 
-    const editWord = (editedWord, currentId) => {
-        const updatedWord = words.filter(w => w.id === currentId);
-        updatedWord.id = currentId;
-        updatedWord.english = editedWord.english;
-        updatedWord.russian = editedWord.russian;
-        updatedWord.transcription = editedWord.transcription;
-        updatedWord.tags = editedWord.tags;
-
-        const restWords = words.filter(w => w.id !== currentId);
-        setWords([updatedWord, ...restWords]);       
-    }
-
-    //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
-    const sortedWords = useMemo(() => {
-        if(selectedSort) {
-            return [...words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
-        }
-        return words;
-    }, [selectedSort, words]);
-
-    //Функция для добавления новых слов
-    const createWord = (newWord) => {
-        setWords([newWord, ...words]);
-        setKeys([...keys, newWord.tags]);
-    };
+    console.log(wordsStore.words);
 
 
+    // const [words, setWords] = useState(wordsData);
+    // const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
+    // const [selectedSort, setSelectedSort] = useState('');
+    // const [searchQuery, setSearchQuery] = useState('');
 
-    //Функция для удаления слов
-    const removeWord = (currentWord) => {
-        setWords(words.filter(w => w.id !== currentWord.id));
-    };
+    // //Функция для редактирования слов
 
-    //Функция для сортировки слов 
-    const sortWords = (sort) => {
-        setSelectedSort(sort);
-    };
+    // const editWord = (editedWord, currentId) => {
+    //     const updatedWord = words.filter(w => w.id === currentId);
+    //     updatedWord.id = currentId;
+    //     updatedWord.english = editedWord.english;
+    //     updatedWord.russian = editedWord.russian;
+    //     updatedWord.transcription = editedWord.transcription;
+    //     updatedWord.tags = editedWord.tags;
 
-    //Функция для поиска слов 
-    const sortedAndSearchedWords = useMemo(() => {
-        return sortedWords.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
-    }, [searchQuery, sortedWords])
+    //     const restWords = words.filter(w => w.id !== currentId);
+    //     setWords([updatedWord, ...restWords]);       
+    // }
+
+    // //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
+    // const sortedWords = useMemo(() => {
+    //     if(selectedSort) {
+    //         return [...words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
+    //     }
+    //     return words;
+    // }, [selectedSort, words]);
+
+    // //Функция для добавления новых слов
+    // const createWord = (newWord) => {
+    //     setWords([newWord, ...words]);
+    //     setKeys([...keys, newWord.tags]);
+    // };
+
+
+
+    // //Функция для удаления слов
+    // const removeWord = (currentWord) => {
+    //     setWords(words.filter(w => w.id !== currentWord.id));
+    // };
+
+    // //Функция для сортировки слов 
+    // const sortWords = (sort) => {
+    //     setSelectedSort(sort);
+    // };
+
+    // //Функция для поиска слов 
+    // const sortedAndSearchedWords = useMemo(() => {
+    //     return sortedWords.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
+    // }, [searchQuery, sortedWords])
 
     return (
         <main className="main margin38">
             <Title title="dictionary"/>
             <div className="dictionary">
                 <div className="dictionary__container">
-                    <Select
+                    {/* <Select
                         defaultValue="sort"
                         options={[
                             {value: 'english', name: 'sort by word'}, 
@@ -79,30 +92,27 @@ function Dictionary() {
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
                         />
-                    </div>
-                    {/* <Select
-                        value={selectedSort}
-                        onChange={sortWords}
-                        defaultValue="filter out per topics"  
-                        options={keys}        
-                    /> */}
+                    </div> */}
                 </div>
-                <div className="table">
-                    {sortedAndSearchedWords.length 
-                    ?
+                {/* <div className="table">
                     <div className="table__container">
-                        {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id} edit={editWord}/>)}
+                        {wordsStore.words.map(word => <WordRow data={word} key={word.id}/>)}
                     </div>
-                    :
-                    <div className="warning">There are no words in the dictionary yet</div>
-                    }
-                </div>
-                <Form create={createWord}/>
+                </div> */}
+                <Table 
+                    sortedAndSearchedWords={wordsStore.words}
+                    // removeWord={removeWord}
+                    // editWord={editWord}
+                    // error={error}
+                />
+                {/* <Form create={createWord}/> */}
             </div>
         </main>
     )
 
 }
+
+const Dictionary = observer(DictionaryComponent);
 
 export default Dictionary;
 

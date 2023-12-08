@@ -8,7 +8,7 @@ function CardObverse({tag, index, length, word, transcription}) {
             <div className="card__field card__field_obverse">
                 <div className="card__add-info">
                     <div className="card__tag">
-                        {'#'+tag}
+                        {tag ? ('#'+tag) : ('# the topic is not specified')}
                     </div>
                     <div className="card__number">
                         {index+' / '+ length}

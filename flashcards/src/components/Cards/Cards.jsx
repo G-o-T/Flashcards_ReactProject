@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Field from "../Field/Field";
 import Button from "../UI/Button/Button";
-import { wordsData } from "../../testData";
+import { wordsStore } from "../../stores/WordsStore";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
 
@@ -17,8 +17,12 @@ function Cards() {
     //Для задания 27 недели. Показывает "сколько слов изучено за одну тренировку"
     const learnedWord = useRef(0);
 
-    let w = wordsData[index];
-    let tagWords = wordsData;
+    useEffect(() => {
+        wordsStore.setWords();
+    }, []);
+
+    let w = wordsStore.words[index];
+    let tagWords = wordsStore.words;
 
     //Показывает следующую карточку
     function showNextCard() {

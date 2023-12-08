@@ -7,7 +7,7 @@
 @import "../components/UI/Navbar/nav";
 @import "../components/UI/Button/button";
 @import "../components/Footer/footer";
-@import "./table";
+@import "../components/Table/table";
 @import "../components/UI/Input/input";
 @import "../components/Form/form";
 @import '../components/Pages/Dictionary/dictionary';
@@ -19,6 +19,8 @@
 @import "../components/Card/card";
 @import "../components/UI/ModalWindow.jsx/modal";
 @import "../components/UI/Error/error";
+@import "../components/UI/Loading/loading";
+
 
 html {
     box-sizing: border-box;
