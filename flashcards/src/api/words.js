@@ -1,5 +1,7 @@
+import { loadingStore } from "../stores/LoadingStore";
+
 export const fetchWords = async () => {
-    // setIsLoading(true);
+    loadingStore.setLoading(true);
 
     try {
         const response = await fetch('/api/words');
@@ -15,6 +17,6 @@ export const fetchWords = async () => {
         console.log(err.message);
         // setError(err.message);
     } finally {
-        // setIsLoading(false);
+        loadingStore.setLoading(false);
     }
 }

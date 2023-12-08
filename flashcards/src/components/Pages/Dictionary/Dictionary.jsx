@@ -2,10 +2,8 @@ import React, { useEffect, useState, useMemo } from "react";
 import Title from "../../UI/Title/Title";
 import Select from "../../UI/Select/Select";
 import WordRow from "../../WordRow/WordRow";
-// import { wordsData } from "../../../testData";
 import Form from "../../Form/Form";
 // import Loading from "../../UI/Loading/Loading";
-// import { wordsStore } from "../../../stores/WordsStore";
 import { wordsStore } from "../../../stores/WordsStore";
 import { observer } from 'mobx-react-lite';
 import Table from "../../Table/Table";
@@ -16,13 +14,9 @@ function DictionaryComponent() {
         wordsStore.setWords();
     }, []);
 
-    console.log(wordsStore.words);
-
-
-    // const [words, setWords] = useState(wordsData);
     // const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
-    // const [selectedSort, setSelectedSort] = useState('');
-    // const [searchQuery, setSearchQuery] = useState('');
+    const [selectedSort, setSelectedSort] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     // //Функция для редактирования слов
 
@@ -38,13 +32,13 @@ function DictionaryComponent() {
     //     setWords([updatedWord, ...restWords]);       
     // }
 
-    // //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
-    // const sortedWords = useMemo(() => {
-    //     if(selectedSort) {
-    //         return [...words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
-    //     }
-    //     return words;
-    // }, [selectedSort, words]);
+    //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
+    const sortedWords = useMemo(() => {
+        if(selectedSort) {
+            return [...wordsStore.words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
+        }
+        return wordsStore.words;
+    }, [selectedSort, wordsStore.words]);
 
     // //Функция для добавления новых слов
     // const createWord = (newWord) => {
@@ -60,9 +54,9 @@ function DictionaryComponent() {
     // };
 
     // //Функция для сортировки слов 
-    // const sortWords = (sort) => {
-    //     setSelectedSort(sort);
-    // };
+    const sortWords = (sort) => {
+        setSelectedSort(sort);
+    };
 
     // //Функция для поиска слов 
     // const sortedAndSearchedWords = useMemo(() => {
@@ -74,7 +68,7 @@ function DictionaryComponent() {
             <Title title="dictionary"/>
             <div className="dictionary">
                 <div className="dictionary__container">
-                    {/* <Select
+                    <Select
                         defaultValue="sort"
                         options={[
                             {value: 'english', name: 'sort by word'}, 
@@ -92,7 +86,7 @@ function DictionaryComponent() {
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
                         />
-                    </div> */}
+                    </div>
                 </div>
                 {/* <div className="table">
                     <div className="table__container">
