@@ -11,53 +11,27 @@ import Table from "../../Table/Table";
 function DictionaryComponent() {
 
     useEffect(() => {
-        wordsStore.setWords();
+        wordsStore.loadWords();
     }, []);
 
-    // const [keys, setKeys] = useState([...new Set(wordsData.map(wordData => wordData.tags))]);
-    const [selectedSort, setSelectedSort] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
-
-    // //Функция для редактирования слов
-
-    // const editWord = (editedWord, currentId) => {
-    //     const updatedWord = words.filter(w => w.id === currentId);
-    //     updatedWord.id = currentId;
-    //     updatedWord.english = editedWord.english;
-    //     updatedWord.russian = editedWord.russian;
-    //     updatedWord.transcription = editedWord.transcription;
-    //     updatedWord.tags = editedWord.tags;
-
-    //     const restWords = words.filter(w => w.id !== currentId);
-    //     setWords([updatedWord, ...restWords]);       
-    // }
+    // const [selectedSort, setSelectedSort] = useState('');
+    // const [searchQuery, setSearchQuery] = useState('');
 
     //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
     const sortedWords = useMemo(() => {
-        if(selectedSort) {
-            return [...wordsStore.words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
-        }
-        return wordsStore.words;
-    }, [selectedSort, wordsStore.words]);
-
-    // //Функция для добавления новых слов
-    // const createWord = (newWord) => {
-    //     setWords([newWord, ...words]);
-    //     setKeys([...keys, newWord.tags]);
-    // };
+        // if(selectedSort) {
+        //     return [...words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
+        // }
+        // return words;
+        wordsStore.sortWords();
+    }, [wordsStore.selectedSort, wordsStore.words]);
 
 
-
-    // //Функция для удаления слов
-    // const removeWord = (currentWord) => {
-    //     setWords(words.filter(w => w.id !== currentWord.id));
-    // };
-
-    // //Функция для сортировки слов 
+    //Функция для сортировки слов 
     const sortWords = (sort) => {
-        setSelectedSort(sort);
+        wordsStore.setSelectedSort(sort);
     };
-
+    
     // //Функция для поиска слов 
     // const sortedAndSearchedWords = useMemo(() => {
     //     return sortedWords.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
@@ -74,11 +48,11 @@ function DictionaryComponent() {
                             {value: 'english', name: 'sort by word'}, 
                             {value: 'russian', name: 'sort by meaning'}
                         ]}
-                        value={selectedSort}
+                        value={wordsStore.selectedSort}
                         onChange={sortWords}
                         >
                     </Select>
-                    <div className="search-form">
+                    {/* <div className="search-form">
                         <input 
                             type="text" 
                             className="search-form__search-field" 
@@ -86,20 +60,13 @@ function DictionaryComponent() {
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
                         />
-                    </div>
+                    </div> */}
                 </div>
-                {/* <div className="table">
-                    <div className="table__container">
-                        {wordsStore.words.map(word => <WordRow data={word} key={word.id}/>)}
-                    </div>
-                </div> */}
                 <Table 
                     sortedAndSearchedWords={wordsStore.words}
-                    // removeWord={removeWord}
-                    // editWord={editWord}
                     // error={error}
                 />
-                {/* <Form create={createWord}/> */}
+                <Form />
             </div>
         </main>
     )

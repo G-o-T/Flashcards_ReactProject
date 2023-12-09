@@ -1,5 +1,5 @@
-export const fetchRemoveWord = (currentWord) => {
-    fetch( `api/words/${currentWord.id}/delete`, {
+export const fetchRemoveWord = async (currentWord) => {
+    await fetch( `api/words/${currentWord.id}/delete`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
     })

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { wordsStore } from "../../../stores/WordsStore";
 
 function Offer() {
+
+    useEffect(() => {
+        wordsStore.loadWords();
+    }, []);
+
     return (
         
         <main className="main margin35">

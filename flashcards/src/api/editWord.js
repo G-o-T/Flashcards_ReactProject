@@ -1,5 +1,5 @@
 export const fetchEditWord = async (updatedWord) => {
-    fetch( `api/words/${updatedWord.id}/update`, {
+    await fetch( `api/words/${updatedWord.id}/update`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify( updatedWord ),

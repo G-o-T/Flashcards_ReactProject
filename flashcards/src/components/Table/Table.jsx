@@ -1,13 +1,14 @@
 import WordRow from "../WordRow/WordRow";
 
-function Table({sortedAndSearchedWords, removeWord, editWord, error}) {
+function Table({sortedAndSearchedWords}) {
+
 
     return (
         <div className="table">
             {sortedAndSearchedWords.length 
             ?
             <div className="table__container">
-                {sortedAndSearchedWords.map(word => <WordRow remove={removeWord} data={word} key={word.id} edit={editWord} error={error}/>)}
+                {sortedAndSearchedWords.map(word => <WordRow data={word} key={word.id}/>)}
             </div>
             :
             <div className="warning">There are no words in the dictionary yet</div>

@@ -3,8 +3,9 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useInput } from "../../../hooks/validationHooks";
 import Error from "../Error/Error";
+import { wordsStore } from "../../../stores/WordsStore";
 
-function EditField({active, setActive, data, edit}) {
+function EditField({active, setActive, data}) {
 
     const english = useInput(data.english, {isEmptyError: true, latinError: true});
     const russian = useInput(data.russian, {isEmptyError: true, cyrillicError: true});
@@ -17,13 +18,14 @@ function EditField({active, setActive, data, edit}) {
         e.preventDefault();
 
         const editedWord = {
+            id: data.id,
             english: english.value,
             russian: russian.value,
             transcription: transcription.value,
             tags: tags.value,
         }
 
-        edit(editedWord, data.id);
+        wordsStore.editWord(editedWord);
         setActive(false);
     }
 

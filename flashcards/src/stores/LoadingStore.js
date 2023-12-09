@@ -11,7 +11,7 @@ class LoadingStore {
 
     setLoading(value) {
         this.isLoading = value;
-        console.log(this.isLoading);
+        // console.log(this.isLoading);
     }
 
 }

@@ -1,5 +1,5 @@
-export const fetchNewWord = (newWord) => {
-    fetch( `api/words/add`, {
+export const fetchNewWord = async (newWord) => {
+    await fetch( `api/words/add`, {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify( newWord ),
