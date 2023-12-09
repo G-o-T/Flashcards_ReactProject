@@ -2,12 +2,11 @@ import { fetchWords } from "../api/words";
 import { fetchRemoveWord } from "../api/removeWord";
 import { fetchEditWord  } from "../api/editWord";
 import { fetchNewWord } from "../api/createWord";
-import { makeAutoObservable } from "mobx";
-// import { makeObservable, observable, action} from "mobx"
+import { makeAutoObservable, toJS } from "mobx";
 
 class WordsStore {
     words = [];
-    selectedSort = [];
+    selectedSort = '';
 
     constructor() {
         makeAutoObservable(this);
@@ -28,7 +27,6 @@ class WordsStore {
         this.setWords(updatedArr);
     }
 
-
     editWord(value) {
         fetchEditWord(value);
 
@@ -42,9 +40,8 @@ class WordsStore {
 
             return item;
         })
-   
     }
-
+    
     createWord(value) {
         fetchNewWord(value);
         this.setWords([value, ...this.words])
@@ -52,18 +49,16 @@ class WordsStore {
 
     sortWords() {
         if(this.selectedSort) {
-            return [...this.words].sort((a, b) => a[this.selectedSort].localeCompare(b[this.selectedSort]));
+            this.words = [...toJS(this.words)].sort((a, b) => a[this.selectedSort].localeCompare(b[this.selectedSort]));
+            return;
         }
-        return this.words;
+        
+        this.words = toJS(this.words);
     }
 
     setSelectedSort(value) {
         this.selectedSort = value;
     }
-
-
-
-
 }
 
 export const wordsStore = new WordsStore();

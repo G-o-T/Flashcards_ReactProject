@@ -14,28 +14,18 @@ function DictionaryComponent() {
         wordsStore.loadWords();
     }, []);
 
-    // const [selectedSort, setSelectedSort] = useState('');
-    // const [searchQuery, setSearchQuery] = useState('');
-
-    //Для улучшения производительности, проверка сортировки отработает только при определенных изменениях
-    const sortedWords = useMemo(() => {
-        // if(selectedSort) {
-        //     return [...words].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
-        // }
-        // return words;
-        wordsStore.sortWords();
-    }, [wordsStore.selectedSort, wordsStore.words]);
-
+    const [searchQuery, setSearchQuery] = useState('');
 
     //Функция для сортировки слов 
     const sortWords = (sort) => {
         wordsStore.setSelectedSort(sort);
+        wordsStore.sortWords();
     };
     
-    // //Функция для поиска слов 
-    // const sortedAndSearchedWords = useMemo(() => {
-    //     return sortedWords.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
-    // }, [searchQuery, sortedWords])
+    //Функция для поиска слов 
+    const sortedAndSearchedWords = useMemo(() => {
+        return wordsStore.words.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
+    }, [searchQuery, wordsStore.words])
 
     return (
         <main className="main margin38">
@@ -52,7 +42,7 @@ function DictionaryComponent() {
                         onChange={sortWords}
                         >
                     </Select>
-                    {/* <div className="search-form">
+                    <div className="search-form">
                         <input 
                             type="text" 
                             className="search-form__search-field" 
@@ -60,17 +50,16 @@ function DictionaryComponent() {
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
                         />
-                    </div> */}
+                    </div>
                 </div>
                 <Table 
-                    sortedAndSearchedWords={wordsStore.words}
+                    sortedAndSearchedWords={sortedAndSearchedWords}
                     // error={error}
                 />
                 <Form />
             </div>
         </main>
     )
-
 }
 
 const Dictionary = observer(DictionaryComponent);
