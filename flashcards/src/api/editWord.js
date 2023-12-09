@@ -5,5 +5,5 @@ export const fetchEditWord = async (updatedWord) => {
         body: JSON.stringify( updatedWord ),
     })
         .then(() => console.log('word was changed'))
-        // .catch( e => setError(e, e.message=`Error sending word to server: ${e}`));
+        .catch( e => console.log( `Error sending word to server: ${e}` ));
 }

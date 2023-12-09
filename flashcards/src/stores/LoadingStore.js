@@ -6,12 +6,10 @@ class LoadingStore {
 
     constructor(isLoading) {
         makeAutoObservable(this);
-        // this.isLoading = isLoading;
     }
 
     setLoading(value) {
         this.isLoading = value;
-        // console.log(this.isLoading);
     }
 
 }

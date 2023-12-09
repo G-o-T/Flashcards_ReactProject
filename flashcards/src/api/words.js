@@ -14,8 +14,7 @@ export const fetchWords = async () => {
         return words;
 
     } catch (err) {
-        console.log(err.message);
-        // setError(err.message);
+        console.log( `Error sending word to server: ${err}` );
     } finally {
         loadingStore.setLoading(false);
     }

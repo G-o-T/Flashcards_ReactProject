@@ -10,11 +10,7 @@ function LoadingWrapper({children}) {
     // const isLoading = loadingStore.isLoading;
     // console.log(isLoading);
 
-    // // const words = [{"id":"14985","english":"work","transcription":"work","russian":"Работа","tags":"существительное","tags_json":"[\"u0441u0443u0449u0435u0441u0442u0432u0438u0442u0435u043bu044cu043du043eu0435\"]"}];
-
-    // const words = wordsStore.words;
-    // console.log(words);
-
+    console.log(loadingStore.isLoading);
 
     return (
     <>

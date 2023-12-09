@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Title from "../../UI/Title/Title";
 import Select from "../../UI/Select/Select";
-import WordRow from "../../WordRow/WordRow";
 import Form from "../../Form/Form";
-// import Loading from "../../UI/Loading/Loading";
 import { wordsStore } from "../../../stores/WordsStore";
 import { observer } from 'mobx-react-lite';
 import Table from "../../Table/Table";
@@ -25,7 +23,7 @@ function DictionaryComponent() {
     //Функция для поиска слов 
     const sortedAndSearchedWords = useMemo(() => {
         return wordsStore.words.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
-    }, [searchQuery, wordsStore.words])
+    }, [searchQuery])
 
     return (
         <main className="main margin38">
