@@ -1,8 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
-
 class LoadingStore {
-    isLoading = false;
+    isLoading = "";
 
     constructor(isLoading) {
         makeAutoObservable(this);
