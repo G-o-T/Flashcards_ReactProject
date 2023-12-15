@@ -23,7 +23,7 @@ function DictionaryComponent() {
     //Функция для поиска слов 
     const sortedAndSearchedWords = useMemo(() => {
         return wordsStore.words.filter(w => w.english.toLowerCase().includes(searchQuery) || w.russian.toLowerCase().includes(searchQuery))
-    }, [searchQuery])
+    }, [searchQuery, wordsStore.words])
 
     return (
         <main className="main margin38">
