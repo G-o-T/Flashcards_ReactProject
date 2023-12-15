@@ -10,6 +10,7 @@ function DictionaryComponent() {
 
     useEffect(() => {
         wordsStore.loadWords();
+        wordsStore.setSelectedSort("sort");
     }, []);
 
     const [searchQuery, setSearchQuery] = useState('');
